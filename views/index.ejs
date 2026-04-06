@@ -1,0 +1,82 @@
+<%- include("partials/header.ejs") %>
+
+<section id="title">
+    <div class="container mt-5">
+        <h1 class="main-title content appear tiempos">Voided Journal</h1>
+        <p class="main-notes content appear libre"> where you can write your own thoughts. </p>
+    </div>
+</section>
+
+<section id="welcome">
+    <div class="container mt-5 py-5">
+        <h1 class="main-intro black content appear libre">hellooo welcomee,</h1>
+        <p class="random-quote black content appear libre"> <%= locals.randomQuote %> </p>
+    </div>
+</section>
+
+<section id="posts">
+    <div class="posts-section my-5 py-5 w-100 content appear">
+        <h2 class="posts-section-title content appear libre black">-------- view your posts? --------</h2>
+
+        <div class="posts-container my-5 py-5">
+            <% if (locals.posts.length > 0) { %>
+                <% posts.forEach(post => { %>
+                        <div class="post-card content" data-id="<%= post.id %>" data-full-title="<%= post.title %>" data-full-body="<%= post.body %>">
+                            <h4 class="post-title black"><%= post.title %></h4>
+                            <p class="post-body black"><%= post.body %></p>
+                            <div class="button-container">
+                                <button type="submit" class="button mx-1 delete">
+                                    <img src="/images/delete.svg" alt="delete" class="content appear">
+                                </button>
+                                <button type="submit" class="button mx-1 edit">
+                                    <img src="/images/edit.svg" alt="edit" class="content appear">
+                                </button>
+                                <button type="submit" class="button mx-1 view">
+                                    <img src="/images/view.svg" alt="view" class="content appear">
+                                </button>
+                            </div>
+                        </div>
+            <% }) } else { %>
+                <p class="content appear libre black empty-warning"> you haven't made any posts yet... create one? </p>
+            <% } %>
+        </div>
+    </div>
+</section>
+
+<section id="create">
+    <div class="container content appear create-container my-5 py-5">
+        <h2 class="card-creation-title content appear libre black mb-5 pb-5">-------- make a post? --------</h2>
+
+        <div class="row justify-content appear-center">
+            <div class="col-10">
+                <input type="text" name="TITLE" class="card-title white content appear libre w-100" placeholder="what's the main topic?">
+                <textarea name="BODY" class="card-body white content appear libre w-100" placeholder="write your thoughts down."></textarea>
+                <button type="submit" class="card-button white content appear libre w-25">post it?</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="modals">
+    <div class="dark-background edit-modal">
+        <div class="row justify-content container modal-container">
+            <h1 class="edit-card-title libre black mb-5 pb-5">-------- change of thoughts? --------</h1>
+
+            <div class="col-10">
+                <input type="text" name="TITLE" class="edit-title white libre w-100" placeholder="what's the main topic?">
+                <textarea name="BODY" class="edit-body white libre w-100" placeholder="write your thoughts down."></textarea>
+                <button type="submit" class="edit-button white libre w-25">finish editing?</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="dark-background view-modal">
+        <div class="row justify-content container modal-container view-container">
+            <h1 class="libre black view-title">sssssssssssssssssssssssssssssssss</h1>
+            <p class="libre black view-body">sssssssssssssssssssss</p>
+            <button type="submit" class="view-button white libre w-25">ready to move on?</button>
+        </div>
+    </div>
+</section>
+
+<%- include("partials/footer.ejs") %>
