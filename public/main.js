@@ -196,13 +196,13 @@ cardButton.addEventListener("click", () => {
         card.querySelectorAll(".content").forEach(el => appearElement(el))
         attachCardListeners(card)
 
-        document.querySelector(".posts-container").appendChild(card)
-        appearElement(card)
-        document.querySelector(".empty-warning").remove()
-
         cardTitle.value = ""
         cardBody.value = ""
         cardButton.disabled = true
+
+        document.querySelector(".posts-container").appendChild(card)
+        appearElement(card)
+        document.querySelector(".empty-warning").remove()
     })
 })
 
